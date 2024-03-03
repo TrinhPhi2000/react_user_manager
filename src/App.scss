@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+        'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+.app-container {
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        .title {
+            text-align: center;
+            font-size: 23px;
+            font-weight: 600;
+            padding-top: 30px;
+        }
+        .text {
+            font-weight: 600;
+            padding-bottom: 3px;
+        }
+        input {
+            padding: 10px 5px;
+            outline: none;
+            border: none;
+            margin-bottom: 7px;
+            background-color: #1618230f;
+            border-radius: 3px;
+            width: 100%;
+
+            &:hover {
+                background-color: #dedede;
+            }
+        }
+        .input-2 {
+            position: relative;
+            i {
+                cursor: pointer;
+                position: absolute;
+                top: 17px;
+                right: 10px;
+            }
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 8px;
+            border: none;
+            border-radius: 3px;
+            &.active {
+                background-color: #fe2c55;
+                color: white;
+            }
+        }
+        button[disnabled='disnabled'],
+        button:disabled {
+            cursor: not-allowed;
+        }
+        .back {
+            text-align: center;
+            margin-top: 30px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+    }
+}
