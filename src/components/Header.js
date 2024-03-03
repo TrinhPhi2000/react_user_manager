@@ -7,10 +7,9 @@ import logoApp from '../assets/images/logo192.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../context/Usercontext';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { handleLogoutRedux } from '../redux/actions/userAction';
 const Header = (props) => {
-    const { logout, user } = useContext(UserContext);
     const [hideHeader, setHideHeader] = useState(false);
     // useEffect(() => {
     //     if (window.location.pathname === '/login') {
@@ -18,11 +17,21 @@ const Header = (props) => {
     //     }
     // }, []);
     const navigate = useNavigate();
+
+    const user = useSelector((state) => state.user.account);
+    const dispatch = useDispatch();
     const handleLogout = () => {
-        logout();
-        navigate('/');
-        toast.success('Log out succes');
+        dispatch(handleLogoutRedux());
+        // logout();
+        // navigate('/');
+        // toast.success('Log out succes');
     };
+    useEffect(() => {
+        if (user && user.auth === false && window.location.pathname !== '/login') {
+            navigate('/');
+            toast.success('Log out succes');
+        }
+    }, [user]);
     return (
         <>
             <Navbar expand="lg" className="bg-body-tertiary">
